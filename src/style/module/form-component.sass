@@ -1,0 +1,89 @@
+@use '../settings/_colors.sass'
+$default-border-color: #4F4F4F
+$shadow-transparency: 0.5
+$fill-lighten: 20%
+
+@mixin field-settings($color)
+    --box-shadow-color:#{rgba($color, $shadow-transparency)}
+    --light-color: #{mix($color, #ffffff, $fill-lighten)}
+    --color: #{$color}
+    border: 1px solid $color
+
+@mixin fill-transition()
+    transition-property: background-color, border-color
+    transition-duration: .5s
+
+@mixin underline()
+    --border-style: solid
+    border: 0px var(--border-style) $default-border-color
+    border-radius: 0px
+    border-bottom: 1px var(--border-style) $default-border-color
+
+.input
+    height: 30px
+    width: 100%
+    box-sizing: border-box
+    font-size: 1em
+    padding-left: 5px
+    border-radius: 5px
+    border: 1px solid $default-border-color
+    text-overflow: ellipsis
+    transition: box-shadow 0.5s
+
+
+.input--primary:focus 
+    @include field-settings(_colors.$primary)
+
+.input--secondary:focus 
+    @include field-settings(_colors.$secondary)
+
+.input--accent:focus 
+    @include field-settings(_colors.$accent)
+
+.input--positive:focus 
+    @include field-settings(_colors.$positive)
+
+.input--negative:focus 
+    @include field-settings(_colors.$negative)
+
+.input--warning:focus 
+    @include field-settings(_colors.$warning)
+
+.input--info:focus 
+    @include field-settings(_colors.$info)
+
+.input--inner-shadow:focus 
+    box-shadow: inset 0px 4px 4px var(--box-shadow-color)
+
+
+.input--drop-shadow:focus 
+    box-shadow: 0px 0px 15px var(--box-shadow-color)
+
+
+.input--filled
+    @include fill-transition()
+
+.input--filled:focus 
+    background-color: var(--light-color)
+
+.input--underline
+    @include underline()
+    background: unset
+    @include fill-transition()
+
+.input--underline:focus 
+    border: 0px var(--border-style) var(---color)
+    border-bottom: 1px var(--border-style) var(--color)
+
+
+.input--filled-underline 
+    @include underline()
+    background: white
+    transition-duration: 0.5s
+    transition-property: border-color, background-color
+
+
+.input--filled-underline:focus 
+    border: 0px var(--border-style) var(--color)
+    border-bottom: 1px var(--border-style) var(--color)
+    background: var(--light-color)
