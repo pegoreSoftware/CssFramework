@@ -5,7 +5,7 @@
 npm install -g sass
 ```
 
-## starter the watcher
+## start the watcher
 ```bash
 sass --watch src 
 ```
