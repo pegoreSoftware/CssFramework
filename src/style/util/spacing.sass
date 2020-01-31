@@ -1,0 +1,20 @@
+@use '../settings/_sizes'
+
+@each $name, $space in _sizes.$space
+    .u-pt-#{$name}, .u-py-#{$name}
+        padding-top: $space
+    .u-pb-#{$name}, .u-py-#{$name}
+        padding-bottom: $space
+    .u-pl-#{$name}, .u-px-#{$name}
+        padding-left: $space
+    .u-pr-#{$name}, .u-px-#{$name}
+        padding-right: $space
+
+    .u-mt-#{$name}, .u-my-#{$name}
+        margin-top: $space
+    .u-mb-#{$name}, .u-my-#{$name}
+        margin-bottom: $space
+    .u-ml-#{$name}, .u-mx-#{$name}
+        margin-left: $space
+    .u-mr-#{$name}, .u-mx-#{$name}
+        margin-right: $space
