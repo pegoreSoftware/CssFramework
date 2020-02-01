@@ -1,20 +1,8 @@
-@use '../settings/_colors.sass'
+@use '../settings/_colors.scss'
 $fill-lighten: 20%
 
-:root
-    --primary: #{_colors.$primary}
-    --secondary: #{_colors.$secondary}
-    --accent: #{_colors.$accent}
-    --positive: #{_colors.$positive}
-    --negative: #{_colors.$negative}
-    --warning: #{_colors.$warning}
-    --info: #{_colors.$info}
-
-    --light-primary: #{mix(_colors.$primary, #ffffff, $fill-lighten)}
-    --light-secondary: #{mix(_colors.$secondary, #ffffff, $fill-lighten)}
-    --light-accent: #{mix(_colors.$accent, #ffffff, $fill-lighten)}
-    --light-positive: #{mix(_colors.$positive, #ffffff, $fill-lighten)}
-    --light-negative: #{mix(_colors.$negative, #ffffff, $fill-lighten)}
-    --light-warning: #{mix(_colors.$warning, #ffffff, $fill-lighten)}
-    --light-info: #{mix(_colors.$info, #ffffff, $fill-lighten)}
+body
+    @each $name, $var in _colors.$default-colors
+        --#{$name}: #{$var}
+        --light-#{$name}: #{mix($var, #ffffff, $fill-lighten)}
 

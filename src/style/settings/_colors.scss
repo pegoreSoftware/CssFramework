@@ -1,0 +1,58 @@
+$default-colors: (
+    'primary': #D250FF,
+    'secondary': #6970FF,
+    'accent': #5CE2FF,
+    'positive': #219653,
+    'negative': #EB5757,
+    'warning': #F2C94C,
+    'info': #56CCF2,
+);
+
+$themes: (
+    'dark': (
+        'primary': #3B2E50,
+        'secondary': #556270,
+        'accent': #5CE2FF,
+        'positive': #6AF0A3,
+        'negative': #F87171,
+        'warning': #FADA79,
+        'info': #83DCF9
+    ),
+    'light': (
+        'primary': #E188F0,
+        'secondary': #78C3FA,
+        'accent': #5CE2FF,
+        'positive': #219653,
+        'negative': #EB5757,
+        'warning': #F2C94C,
+        'info': #56CCF2
+    ),
+    'christmas': (
+        'primary': #941F1F,
+        'secondary': #CE6B5D,
+        'accent': #34502B,
+        'positive': #6AF0A3,
+        'negative': #F87171,
+        'warning': #FADA79,
+        'info': #83DCF9
+    ),
+    'easter': (
+        'primary': #F29A2E,
+        'secondary': #033E8C,
+        'accent': #F24957,
+        'positive': #219653,
+        'negative': #EB5757,
+        'warning': #F2C94C,
+        'info': #56CCF2
+    ),
+    'halloween': (
+        'primary': #F2AC29,
+        'secondary': #D91111,
+        'accent': #A65638,
+        'positive': #13542F,
+        'negative': #782828,
+        'warning': #B49539,
+        'info': #0091C0,
+    )
+);
+
