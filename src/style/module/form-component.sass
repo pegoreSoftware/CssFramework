@@ -1,4 +1,4 @@
-@use '../settings/_colors.scss'
+@use '../settings/_general.scss'
 
 $default-border-color: #4F4F4F
 $shadow-transparency: 0.5
@@ -32,7 +32,7 @@ $shadow-transparency: 0.5
     text-overflow: ellipsis
     transition: box-shadow 0.5s
 
-@each $name, $var in _colors.$default-colors
+@each $name, $var in _general.$default-colors
     .input--#{$name}:focus
         @include field-settings($name)
 

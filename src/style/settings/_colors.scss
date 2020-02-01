@@ -1,58 +1,22 @@
-$default-colors: (
-    'primary': #D250FF,
-    'secondary': #6970FF,
-    'accent': #5CE2FF,
-    'positive': #219653,
-    'negative': #EB5757,
-    'warning': #F2C94C,
-    'info': #56CCF2,
+$colors: (
+    'blue': #42A5F5,
+    'red': #FF1D23,
+    'yellow': #FFFC00,
+    'green': #00A258,
+    'purple': #8100B3,
+    'orange': #FF8C00,
+    'cyan': #00FFFF,
+    'teal': #009688,
+    'brow': #795548,
+    'grey': #9E9E9E
 );
 
-$themes: (
-    'dark': (
-        'primary': #3B2E50,
-        'secondary': #556270,
-        'accent': #5CE2FF,
-        'positive': #6AF0A3,
-        'negative': #F87171,
-        'warning': #FADA79,
-        'info': #83DCF9
-    ),
-    'light': (
-        'primary': #E188F0,
-        'secondary': #78C3FA,
-        'accent': #5CE2FF,
-        'positive': #219653,
-        'negative': #EB5757,
-        'warning': #F2C94C,
-        'info': #56CCF2
-    ),
-    'christmas': (
-        'primary': #941F1F,
-        'secondary': #CE6B5D,
-        'accent': #34502B,
-        'positive': #6AF0A3,
-        'negative': #F87171,
-        'warning': #FADA79,
-        'info': #83DCF9
-    ),
-    'easter': (
-        'primary': #F29A2E,
-        'secondary': #033E8C,
-        'accent': #F24957,
-        'positive': #219653,
-        'negative': #EB5757,
-        'warning': #F2C94C,
-        'info': #56CCF2
-    ),
-    'halloween': (
-        'primary': #F2AC29,
-        'secondary': #D91111,
-        'accent': #A65638,
-        'positive': #13542F,
-        'negative': #782828,
-        'warning': #B49539,
-        'info': #0091C0,
-    )
+$variances: (
+    'light': 5,
+    'dark': 4
 );
 
+$max-variation: (
+    'light': 90%,
+    'dark': 90%
+);

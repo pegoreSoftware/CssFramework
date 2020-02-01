@@ -1,0 +1,50 @@
+@use 'sass:map'
+@use 'sass:math'
+@use '../settings/_colors.scss'
+
+@function generate-variance($color, $variance-name, $variation)
+    @if $variance-name == 'dark'
+        @return mix($color, #000, $variation)
+    @else 
+        @return mix($color, #fff, $variation)
+    
+@each $color-name, $color in _colors.$colors
+    .bg-#{$color-name}
+        background-color: $color
+    .text-#{$color-name}
+        color: $color
+    $variation-number: 0
+    @each $variance-name, $variance in _colors.$variances
+        @if $variance-name == 'dark'
+            $variation-number: $variation-number + $variance + 1
+        $base-variation: math.round(map.get(_colors.$max-variation, $variance-name) / $variance)
+        @for $index from 1 through $variance
+            $variation: $base-variation * $index
+            @if $variance-name == 'dark'
+                $variation-number: $variation-number - 1
+            @else 
+                $variation-number: $variation-number + 1
+            .bg-#{$color-name}-#{$variation-number}
+                background-color: generate-variance($color, $variance-name, $variation)
+            .text-#{$color-name}-#{$variation-number}
+                color: generate-variance($color, $variance-name, $variation)
+        
+@function get-color($color-to-get)
+    @each $color-name, $color in _colors.$colors
+        @if $color-name == $color-to-get
+            @return $color
+        $variation-number: 0
+        @each $variance-name, $variance in _colors.$variances
+            @if $variance-name == 'dark'
+                $variation-number: $variation-number + $variance + 1
+            $base-variation: math.round(map.get(_colors.$max-variation, $variance-name) / $variance)
+            @for $index from 1 through $variance
+                @if #{$color-name}-#{$variation-number} == $color-to-get
+                    @return generate-variance($color, $variance-name, $variation)
+                $variation: $base-variation * $index
+                @if $variance-name == 'dark'
+                    $variation-number: $variation-number - 1
+                @else 
+                    $variation-number: $variation-number + 1
+    @error "Color #{$color-to-get} not exist."
+     

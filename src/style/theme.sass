@@ -1,7 +1,7 @@
-@use 'settings/_colors.scss'
+@use 'settings/_themes.scss'
 $fill-lighten: 20%
 
-@each $name, $theme in _colors.$themes 
+@each $name, $theme in _themes.$themes 
     .t-#{$name}
         @each $var-name, $var in $theme
             --#{$var-name}: #{$var}
