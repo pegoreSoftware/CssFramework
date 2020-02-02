@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset=”UTF-8”>
+        <link rel="stylesheet" href="style/theme/field-group.css" type="text/css">
+        <link rel="stylesheet" href="style/base/reset.css" type="text/css">
+        <link rel="stylesheet" href="style/module/field-group.css" type="text/css">
+        <link rel="stylesheet" href="style/util/spacing.css" type="text/css">
+        <link rel="stylesheet" href="style/state/default-states.css" type="text/css">
+        <link rel="stylesheet" href="style/util/colors.css" type="text/css">
+        <link rel="stylesheet" href="style/theme/colors.css" type="text/css">
+        <title>Prisma Framework</title>
+        <style>
+            .column {
+                display: flex;
+                flex-direction: column;
+                padding: 10px;
+                background-color: #E5E5E5;
+            }
+            .column > *:not(:first-child) {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="column">
+            <label class="c-input c-input--left-label">
+                Input
+                <div class="c-input__before">before</div>
+                <div class="c-input__input c-input__input--filled is-info">
+                    <div class="c-input__prepend">prepend</div>
+                    <input class="c-input__field" type="text" placeholder="input">
+                    <div class="c-input__append">append</div>
+                </div>
+                <div class="c-input__after">after</div>
+                <p class="c-input__message">error</p>
+            </label>
+            <label class="c-input">
+                Input
+                <div class="c-input__before">$</div>
+                <input type="text" class="c-input__input c-input__input--filled is-primary">
+            </label>
+            <label class="c-input c-input--left-label">
+                Input
+                <div class="c-input__input c-input__input--filled is-primary">
+                    <div class="c-input__prepend">$</div>
+                    <input class="c-input__field" type="text" placeholder="input">
+                </div>
+                <p class="c-input__message">error</p>
+            </label>
+        </main>
+    </body>
+</html>

@@ -7,24 +7,24 @@ $fill-lighten: 20%
     $fill-color: mix($color, #ffffff, $fill-lighten)
 
     .is-#{$name}
-        &.input
-            &:focus
-                border: 1px solid $color
+        &.c-input
+            &__input
+                &:focus, &.is-focus
+                    border: 1px solid $color
 
-            &--inner-shadow:focus
-                box-shadow: inset 0px 4px 4px rgba($color, $shadow-transparency)
+                &--inner-shadow:focus, &--inner-shadow.is-focus
+                    box-shadow: inset 0px 4px 4px rgba($color, $shadow-transparency)
 
-            &--drop-shadow:focus 
-                box-shadow: 0px 0px 15px rgba($color, $shadow-transparency)
+                &--drop-shadow:focus, &--drop-shadow.is-focus
+                    box-shadow: 0px 0px 15px rgba($color, $shadow-transparency)
 
-            &--filled:focus
-                background-color: $fill-color
+                &--filled:focus, &--filled.is-focus
+                    background-color: $fill-color
+                &--underline:focus
+                    border: 0px solid $color
+                    border-bottom: 1px solid $color
 
-            &--underline:focus
-                border: 0px solid $color
-                border-bottom: 1px solid $color
-
-            &--filled-underline:focus
-                border: 0px solid $color
-                border-bottom: 1px solid $color
-                background: $fill-color
+                &--filled-underline:focus, &--filled-underline.is-focus
+                    border: 0px solid $color
+                    border-bottom: 1px solid $color
+                    background: $fill-color
