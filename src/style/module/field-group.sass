@@ -1,0 +1,34 @@
+@use '../settings/_general.scss'
+
+$default-border-color: #4F4F4F
+
+@mixin fill-transition()
+    transition-property: background-color, border-color
+    transition-duration: .5s
+
+@mixin underline()
+    border: 0px solid $default-border-color
+    border-radius: 0px
+    border-bottom: 1px solid $default-border-color
+
+.input
+    height: 30px
+    width: 100%
+    box-sizing: border-box
+    font-size: 1em
+    padding-left: 5px
+    border-radius: 5px
+    border: 1px solid $default-border-color
+    text-overflow: ellipsis
+    transition: box-shadow 0.5s
+    &--filled
+        @include fill-transition()
+    &--underline
+        @include underline()
+        background: unset
+        @include fill-transition()
+    &--filled-underline 
+        @include underline()
+        background: white
+        transition-duration: 0.5s
+        transition-property: border-color, background-color

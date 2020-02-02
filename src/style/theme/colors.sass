@@ -1,0 +1,9 @@
+@use '../settings/_themes.scss'
+
+@each $theme-name, $theme in _themes.$themes 
+    .t-#{$theme-name}
+        @each $name, $color in $theme
+            .u-bg-#{$name}
+                background-color: $color
+            .u-text-#{$name}
+                color: $color

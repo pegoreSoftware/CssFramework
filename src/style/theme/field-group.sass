@@ -1,0 +1,30 @@
+@use '../settings/_themes.scss'
+$fill-lighten: 20%
+$shadow-transparency: 0.5
+
+@each $name, $theme in _themes.$themes 
+    .t-#{$name}
+        @each $name, $color in $theme
+            .input
+                $fill-color: mix($color, #ffffff, $fill-lighten)
+
+                &.is-#{$name}:focus
+                    border: 1px solid $color
+
+                &--inner-shadow.is-#{$name}:focus
+                    box-shadow: inset 0px 4px 4px rgba($color, $shadow-transparency)
+
+                &--drop-shadow.is-#{$name}:focus 
+                    box-shadow: 0px 0px 15px rgba($color, $shadow-transparency)
+
+                &--filled.is-#{$name}:focus
+                    background-color: $fill-color
+
+                &--underline.is-#{$name}:focus
+                    border: 0px solid $color
+                    border-bottom: 1px solid $color
+
+                &--filled-underline:focus.is-#{$name}:focus
+                    border: 0px solid $color
+                    border-bottom: 1px solid $color
+                    background: $fill-color

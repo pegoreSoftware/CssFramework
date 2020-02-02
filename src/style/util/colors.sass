@@ -8,11 +8,17 @@
         @return mix($color, #000, $variation)
     @else 
         @return mix($color, #fff, $variation)
-    
-@each $color-name, $color in _colors.$colors
-    .bg-#{$color-name}
+
+@each $name, $color in _general.$default-colors
+    .u-bg-#{$name}
         background-color: $color
-    .text-#{$color-name}
+    .u-text-#{$name}
+        color: $color
+     
+@each $color-name, $color in _colors.$colors
+    .u-bg-#{$color-name}
+        background-color: $color
+    .u-text-#{$color-name}
         color: $color
     $variation-number: 0
     @each $variance-name, $variance in _colors.$variances
@@ -30,16 +36,10 @@
             .text-#{$color-name}-#{$variation-number}
                 color: generate-variance($color, $variance-name, $variation)
 
-@each $name, $color in _general.$default-colors
-    .bg-#{$name}
-        background-color: var(--+$name)
-    .text-#{$name}
-        color: var(--+$name)
-
 @function get-color($color-to-get)
     @each $name, $color in _general.$default-colors
        @if $name == $color-to-get
-            @return var(--+$name)
+            @return $color
     @each $color-name, $color in _colors.$colors
         @if $color-name == $color-to-get
             @return $color

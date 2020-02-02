@@ -1,8 +1,0 @@
-@use '../settings/_general.scss'
-$fill-lighten: 20%
-
-body
-    @each $name, $var in _general.$default-colors
-        --#{$name}: #{$var}
-        --light-#{$name}: #{mix($var, #ffffff, $fill-lighten)}
-

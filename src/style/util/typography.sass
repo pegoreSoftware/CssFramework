@@ -19,38 +19,38 @@ $variance: math.ceil(900 / $weights)
     $weight: math.ceil(($variance * $index) / 100) * 100
     @if $weight > 900
         $weight: 900
-    .text-weight-#{$index}
+    .u-text-weight-#{$index}
         font-weight: $weight
 
 @include generate-text-class(_typography.$headers, _typography.$min-header-size, _typography.$max-header-size, _typography.$header-font, header)
 
 @include generate-text-class(_typography.$bodies, _typography.$min-body-size, _typography.$max-body-size, _typography.$body-font, body)
 
-.text-left
+.u-text-left
     text-align: left
-.text-center
+.u-text-center
     text-align: center    
-.text-right
+.u-text-right
     text-align: right
-.text-justify
+.u-text-justify
     text-align: justify
 
-.text-italic
+.u-text-italic
     font-style: italic
 
-.text-no-wrap
+.u-text-no-wrap
     white-space: nowrap
 
-.text-overline
+.u-text-overline
   text-decoration: overline
-.text-strike
+.u-text-strike
   text-decoration: line-through
-.text-underline
+.u-text-underline
   text-decoration: underline
 
-.text-uppercase
+.u-text-uppercase
     text-transform: uppercase
-.text-lowercase
+.u-text-lowercase
     text-transform: lowercase
-.text-capitalize
+.u-text-capitalize
     text-transform: capitalize

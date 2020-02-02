@@ -1,8 +1,0 @@
-@use 'settings/_themes.scss'
-$fill-lighten: 20%
-
-@each $name, $theme in _themes.$themes 
-    .t-#{$name}
-        @each $var-name, $var in $theme
-            --#{$var-name}: #{$var}
-            --light-#{$var-name}: #{mix($var, #ffffff, $fill-lighten)}
