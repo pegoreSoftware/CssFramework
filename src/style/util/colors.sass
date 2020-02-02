@@ -1,6 +1,7 @@
 @use 'sass:map'
 @use 'sass:math'
 @use '../settings/_colors.scss'
+@use '../settings/_general.scss'
 
 @function generate-variance($color, $variance-name, $variation)
     @if $variance-name == 'dark'
@@ -28,8 +29,17 @@
                 background-color: generate-variance($color, $variance-name, $variation)
             .text-#{$color-name}-#{$variation-number}
                 color: generate-variance($color, $variance-name, $variation)
-        
+
+@each $name, $color in _general.$default-colors
+    .bg-#{$name}
+        background-color: var(--+$name)
+    .text-#{$name}
+        color: var(--+$name)
+
 @function get-color($color-to-get)
+    @each $name, $color in _general.$default-colors
+       @if $name == $color-to-get
+            @return var(--+$name)
     @each $color-name, $color in _colors.$colors
         @if $color-name == $color-to-get
             @return $color
@@ -47,4 +57,3 @@
                 @else 
                     $variation-number: $variation-number + 1
     @error "Color #{$color-to-get} not exist."
-     
