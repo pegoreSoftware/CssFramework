@@ -1,0 +1,67 @@
+@use 'sass:list'
+@use 'sass:map'
+@use '../settings/_general.scss'
+@use '../settings/_sizes.scss'
+
+.column
+    display: flex
+    flex-direction: column
+.row
+    display: flex
+.column, .row
+    flex-wrap: wrap
+
+$size: 100% / _general.$grid
+@for $index from 1 through _general.$grid
+    .col-#{$index}
+        flex-basis: $size * $index
+    .order-#{$index}
+        order: $index
+
+
+$count: 0
+@each $name, $breakpoint in _sizes.$breakpoints
+    $condition: max-width
+    @if $count == 0
+        $condition: min-width
+    @media ($condition: $breakpoint)
+        @for $index from 1 through _general.$grid
+            .col-#{$name}-#{$index}
+                flex-basis: $size * $index
+    $count: $count + 1
+
+.no-wrap
+    flex-wrap: nowrap
+
+.justify-start
+    justify-content: start
+.justify-center
+    justify-content: center
+.justify-between
+    justify-content: space-between
+.justify-around
+    justify-content: space-around
+
+.items-stretch
+    align-items: stretch
+.items-start
+    align-items: flex-start
+.items-end
+    align-items: flex-end
+.items-center
+    align-items: center
+.items-baseline
+    align-items: baseline
+
+.self-auto
+    align-self: auto
+.self-start
+    align-self: flex-start
+.self-end
+    align-self: flex-end
+.self-center
+    align-self: center
+.self-baseline
+    align-self: baseline
+.self-stretch
+    align-self: stretch
