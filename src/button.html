@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset=”UTF-8”>
+        <link rel="stylesheet" href="style/base/reset.css" type="text/css">
+        <link rel="stylesheet" href="style/state/button.css" type="text/css">
+        <link rel="stylesheet" href="style/theme/button.css" type="text/css">
+        <link rel="stylesheet" href="style/module/button.css" type="text/css">
+        <title>Prisma Framework</title>
+        <style>
+            .column {
+                display: flex;
+                flex-direction: column;
+                padding: 10px;
+                background-color: #E5E5E5;
+            }
+            .column > *:not(:first-child) {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="column">
+            <button class="c-button is-primary">basico</button>
+            <button class="c-button c-button--outline is-secondary">outline</button>
+            <button class="c-button c-button--glossy is-accent">glossy</button>
+            <button class="c-button c-button--flat is-positive">flat</button>
+            <button class="c-button c-button--gradient is-negative">gradient</button>
+        </main>
+    </body>
+</html>

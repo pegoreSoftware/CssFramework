@@ -1,0 +1,25 @@
+@use '../settings/_general.scss'
+
+$shadow-transparency: 0.5
+$fill-lighten: 20%
+
+@each $name, $color in _general.$default-colors
+
+    .is-#{$name}
+        &.c-input__input
+            $fill-color: mix($color, #ffffff, $fill-lighten)
+            &:focus, &.is-focus
+                border: 1px solid $color
+            &--inner-shadow:focus, &--inner-shadow.is-focus
+                box-shadow: inset 0px 4px 4px rgba($color, $shadow-transparency)
+            &--drop-shadow:focus, &--drop-shadow.is-focus
+                box-shadow: 0px 0px 15px rgba($color, $shadow-transparency)
+            &--filled:focus, &--filled.is-focus
+                background-color: $fill-color
+            &--underline:focus
+                border: 0px solid $color
+                border-bottom: 1px solid $color
+            &--filled-underline:focus, &--filled-underline.is-focus
+                border: 0px solid $color
+                border-bottom: 1px solid $color
+                background: $fill-color
