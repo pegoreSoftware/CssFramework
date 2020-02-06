@@ -1,0 +1,37 @@
+{
+  "name": "CssFramework",
+  "version": "1.0.0",
+  "description": "```bash\r npm install -g sass\r ```",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server --content-base --inline",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pegoreSoftware/CssFramework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pegoreSoftware/CssFramework/issues"
+  },
+  "homepage": "https://github.com/pegoreSoftware/CssFramework#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "babel-loader": "^8.0.6",
+    "babel-watch": "^7.0.0",
+    "html-loader": "^0.5.5",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}

@@ -1,26 +1,52 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset=”UTF-8”>
-        <link rel="stylesheet" href="style/base/reset.css" type="text/css">
-        <link rel="stylesheet" href="style/util/colors.css" type="text/css">
-        <link rel="stylesheet" href="style/util/grid.css" type="text/css">
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <title>Prisma Framework</title>
-        <style>
-            main {
-                display: flex;
-                flex-direction: column;
-                padding: 20px;
-                background-color: #E5E5E5;
-            }
-            .row *{
-                height: 100px;
-            }
-        </style>
-    </head>
-    <body>
-        <main>
-        </main>
-    </body>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <link rel="stylesheet" href="framework/style/base/reset.css" type="text/css">
+  <link rel="stylesheet" href="framework/style/module/button.css" type="text/css">
+  <link rel="stylesheet" href="framework/style/module/field-group.css" type="text/css">
+  <link rel="stylesheet" href="framework/style/state/button.css" type="text/css">
+  <link rel="stylesheet" href="framework/style/theme/button.css" type="text/css">
+  <link rel="stylesheet" href="framework/style/theme/field-group.css" type="text/css">
+  <link rel="stylesheet" href="framework/style/theme/colors.css" type="text/css">
+  <link rel="stylesheet" href="framework/style/util/spacing.css" type="text/css">
+  <link rel="stylesheet" href="framework/style/util/colors.css" type="text/css">
+  <link rel="stylesheet" href="framework/style/util/typography.css" type="text/css">
+  <link rel="stylesheet" href="framework/style/util/grid.css" type="text/css">
+  <title>Prisma Framework</title>
+  <style>
+    body {
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .main>*:not(:first-child) {
+      margin-top: 10px;
+    }
+
+    .grid {
+      height: 1000px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+      grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
+    }
+
+    .row * {
+      height: 100px
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+  </div>
+  <script src="framework/script/route.js"></script>
+  <script src="framework/script/router.js"></script>
+  <script src="framework/script/app.js"></script>
+  <script src="app.js"></script>
+</body>
+
 </html>

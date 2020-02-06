@@ -40,9 +40,9 @@
                 $variation-number: $variation-number - 1
             @else 
                 $variation-number: $variation-number + 1
-            .bg-#{$color-name}-#{$variation-number}
+            .u-bg-#{$color-name}-#{$variation-number}
                 background-color: generate-variance($color, $variance-name, $variation)
-            .text-#{$color-name}-#{$variation-number}
+            .u-text-#{$color-name}-#{$variation-number}
                 color: generate-variance($color, $variance-name, $variation)
 
 @function get-color($color-to-get)
