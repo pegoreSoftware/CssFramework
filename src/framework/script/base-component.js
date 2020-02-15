@@ -22,7 +22,7 @@ export default class BaseComponent extends HTMLElement {
                 }
             }
         };
-        xhttp.open('GET', this.path, true);
+        xhttp.open('GET', this.path, false);
         xhttp.send();
     }
     emit(eventName, ...args) {

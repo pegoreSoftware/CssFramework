@@ -2,10 +2,12 @@ import BaseComponent from './base-component.js'
 export default class Binder {
     constructor(scope) {
         this.scope = scope
-        this.dataBinder()
-        Object.keys(this.scope.data2).forEach(key => {
-            this.setValuesAndEvents(key)
-        })
+        if (this.data) {
+            this.dataBinder()
+            Object.keys(this.scope.data2).forEach(key => {
+                this.setValuesAndEvents(key)
+            })
+        }
         if (this.scope.property) {
             this.scope.property.forEach(p => {
                 this.setPropertyBinder(this.scope, p)

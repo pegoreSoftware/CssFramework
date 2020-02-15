@@ -1,17 +1,17 @@
 class Route {
     url
-    path
+    component
     default
     name
     children
 
-    constructor(url, path, defaultRoute, name, children) {
+    constructor(url, component, defaultRoute, name, children) {
         try {
-            if(!path) {
-                throw 'error: htmlName params are mandatories';
+            if(!component) {
+                throw 'error: component params are mandatories';
             }
             this.url = url;
-            this.path = path;
+            this.component = component;
             this.default = defaultRoute;
             this.name = name
             this.children = children

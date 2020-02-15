@@ -11,19 +11,19 @@ class Router {
             this.routes = routes;
             this.init();
         } catch (e) {
-            console.error(e);   
+            console.error(e);
         }
     }
     init() {
         var r = this.routes;
-        (function(scope, r) { 
+        (function (scope, r) {
             window.addEventListener('hashchange', function (e) {
                 scope.hasChanged(scope, r);
             });
         })(this, r);
         this.hasChanged(this, r);
     }
-    hasChanged(scope, r){
+    hasChanged(scope, r) {
         if (window.location.hash.length > 0) {
             route = this.getRoute(r, window.location.hash.replace('#', ''), '')
             scope.setHtml(route, scope, route.url)
@@ -32,7 +32,7 @@ class Router {
         } else {
             for (var i = 0, length = r.length; i < length; i++) {
                 var route = r[i];
-                if(route.default) {
+                if (route.default) {
                     scope.goToRoute(route.url);
                 }
             }
@@ -42,9 +42,9 @@ class Router {
     goToRoute(path) {
         this.path = []
         let r = this.routes;
-        (function(scope, routes) {
-            let url = path;            
-            if (window.location.hash.replace('#', '') !== (url == '/'? '':url)) {
+        (function (scope, routes) {
+            let url = path;
+            if (window.location.hash.replace('#', '') !== (url == '/' ? '' : url)) {
                 if (url.name)
                     url = scope.getRouteUrlByName(url.name, routes).join('/')
                 let route = scope.getRoute(routes, url, '')
@@ -58,16 +58,10 @@ class Router {
         })(this, r);
     }
     setHtml(route, scope, url) {
-        let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState === 4 && this.status === 200) {
-                document.getElementsByClassName('route-container')[scope.count].innerHTML = this.responseText;
-                scope.count++
-            }
-        };
-        xhttp.open('GET', route.path, false);
-        xhttp.send();
-        scope.path.push(route.url !== '/'? route.url: '')
+        let element = document.createElement(route.component)
+        document.getElementsByClassName('route-container')[scope.count].innerHTML = element.outerHTML;
+        scope.count++
+        scope.path.push(route.url !== '/' ? route.url : '')
         if (route.children && route.children.length > 0) {
             scope.setHtml(scope.getRoute(route.children, url, scope.path.join('/')), scope, url)
         }
@@ -87,7 +81,7 @@ class Router {
             return route[0]
         return routes.filter(r => r.url == '')[0]
     }
-    getRouteUrlByName(name, routes){
+    getRouteUrlByName(name, routes) {
         let url = []
         if (routes) {
             let route = routes.filter(r => r.name == name)
