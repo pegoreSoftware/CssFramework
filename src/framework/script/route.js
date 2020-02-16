@@ -1,4 +1,4 @@
-class Route {
+export class Route {
     url
     component
     default

@@ -1,6 +1,12 @@
 <template>
     <main>
-        <h1>Página principal</h1>
+        <hr>
+        <button @click="toggle">trocar</button>
+        <h2 !if='condition' key="if">Teste com diretiva If</h2>
+        <hr>
+        <button @click="change">mudar</button>
+        <p !for="text in texts" key="for"><span data-out="text">teste</span></p>
+        <br>
         <div class="route-container"></div>
     </main>
 </template>

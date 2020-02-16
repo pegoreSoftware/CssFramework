@@ -1,4 +1,4 @@
-class Router {
+export class Router {
     routes
     count = 0
     path = []

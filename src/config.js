@@ -1,5 +1,10 @@
-import PopUpInfo from './component/pop-up-info.js'
+import { App } from './framework/script/app.js'
+import { Route } from './framework/script/route.js'
+import { Router } from './framework/script/router.js'
 import MyApp from './app.js'
+
+import PopUpInfo from './component/pop-up-info.js'
+
 import MyForm from './component/my-form.js'
 import Button from './pages/button.js'
 import Colors from './pages/colors.js'
@@ -8,17 +13,17 @@ import Input from './pages/input.js'
 import Typography from './pages/typography.js'
 import Main from './pages/main.js'
 
-customElements.define('main-app', MyApp);
-customElements.define('popup-info', PopUpInfo);
-customElements.define('my-form', MyForm)
-customElements.define('page-button', Button)
-customElements.define('page-colors', Colors)
-customElements.define('page-grid', Grid)
-customElements.define('page-input', Input)
-customElements.define('page-typography', Typography)
-customElements.define('main-page', Main)
+var app = new App('main-app', MyApp)
 
-var app = new App()
+App.registerComponent('popup-info', PopUpInfo);
+App.registerComponent('my-form', MyForm)
+App.registerComponent('page-button', Button)
+App.registerComponent('page-colors', Colors)
+App.registerComponent('page-grid', Grid)
+App.registerComponent('page-input', Input)
+App.registerComponent('page-typography', Typography)
+App.registerComponent('main-page', Main)
+
 
 app.router = new Router([
     new Route('/', 'main-page', true, 'buttons', [

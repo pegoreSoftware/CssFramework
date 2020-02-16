@@ -2,7 +2,7 @@ import BaseComponent from './base-component.js'
 export default class Binder {
     constructor(scope) {
         this.scope = scope
-        if (this.data) {
+        if (scope.data) {
             this.dataBinder()
             Object.keys(this.scope.data2).forEach(key => {
                 this.setValuesAndEvents(key)
@@ -18,6 +18,7 @@ export default class Binder {
             mutations.forEach((mutation) => {
                 if (mutation.type == "attributes") {
                     this.setPropertyValues(mutation.attributeName)
+                    this.setDirectiveState()
                 }
             });
         });
@@ -26,6 +27,8 @@ export default class Binder {
             attributes: true
         });
         this.eventBinder()
+        this.directiveBinder()
+        this.setDirectiveState()
     }
     dataBinder() {
         Object.keys(this.scope.data).forEach(d => {
@@ -44,11 +47,12 @@ export default class Binder {
                     let key4 = key == 'data'? key.replace('data', '').concat(key3): key.replace('data.', '').concat('.').concat(key3)
                     this.setDataValues(key4, value)
                     target[key3] = value
+                    this.setDirectiveState()
                     return true
                 }
             })`)
             Object.keys(path).forEach(k => {
-                this.setProxy(`${key}.${k}`, `${key2}.${k}`)
+                this.setProxy(Array.isArray(path)?`${key}[${k}]`:`${key}.${k}`, Array.isArray(path)?`${key2}[${k}]`:`${key2}.${k}`)
             });
         }
     }
@@ -56,7 +60,7 @@ export default class Binder {
         let _in = element.querySelectorAll(`${element.localName} > [data-in="${key}"]`)
         let _out = element.querySelectorAll(`${element.localName} > [data-out="${key}"]`)
         let path = `this.scope.data.${key}`
-        if (eval(`typeof ${path} == 'object'`)) {
+        if (eval(`typeof ${path} == 'object' && !Array.isArray(${path})`)) {
             eval(`Object.keys(${path})`).forEach(k => {
                 this.setDataBinder(element, `${key}.${k}`)
             });
@@ -96,6 +100,9 @@ export default class Binder {
         }
     }
     setDataValues(key, value) {
+        if (!this[key]) {
+            return
+        }
         if (this[key].elements) {
             this[key].elements.forEach(e => {
                 e.element.setAttribute(e.attribute, value)
@@ -111,7 +118,7 @@ export default class Binder {
     setValuesAndEvents(key) {
         let path = `this.scope.data2.${key}`
         this.setDataValues(key, eval(path))
-        if (typeof eval(path) == 'object') {
+        if (typeof eval(path) == 'object' && !Array.isArray(eval(path))) {
             Object.keys(eval(path)).forEach(k => {
                 this.setValuesAndEvents(`${key}.${k}`)
             });
@@ -156,18 +163,15 @@ export default class Binder {
         }
     }
     setPropertyValues(key) {
-        if (Array.isArray(this.scope.property))
-            this.scope.property = {}
-
         if (this.scope.hasAttribute(key)) {
+            let value = this.scope.getAttribute(key)
             if (this[key].elements) {
                 this[key].elements.forEach(e => {
-                    e.element.setAttribute(e.attribute, this.scope.getAttribute(key))
+                    e.element.setAttribute(e.attribute, value)
                 })
             }
-            this.scope.property[key] = this.scope.getAttribute(key)
             this[key]._out.forEach(o => {
-                o.innerHTML = this.scope.getAttribute(key)
+                o.innerHTML = value
             })
         }
     }
@@ -191,6 +195,39 @@ export default class Binder {
             if (child.children.length > 0 && !(child instanceof BaseComponent)) {
                 this.setEvents(child)
             }
+        }
+    }
+    directiveBinder() {
+        window.directives.forEach(d => {
+            this.setDirectiveBinder(this.scope, d)
+        })
+    }
+    setDirectiveBinder(element, directive) {
+        for (let index = 0; index < element.children.length; index++) {
+            const child = element.children[index];
+            for (let i = 0; i < child.attributes.length; i++) {
+                const attribute = child.attributes[i];
+                if (`!${directive.name}` == attribute.name) {
+                    if (!this.directives)
+                        this.directives = []
+                    this.directives.push({
+                        name: directive.name,
+                        directive: directive.directive,
+                        value: attribute.value,
+                        element: child
+                    })
+                }
+            }
+            if (child.children.length > 0 && !(child instanceof BaseComponent)) {
+                this.setDirectiveBinder(child, directive)
+            }
+        }
+    }
+    setDirectiveState() {
+        if (this.directives) {
+            this.directives.forEach(d => {
+                d.directive.update(d.element, d.value, this.scope)
+            });
         }
     }
 }
